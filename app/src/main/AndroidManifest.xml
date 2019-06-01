@@ -4,6 +4,12 @@
     package="com.example.programmingknowledge.mybalance_v11">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 안드로이드 부팅 이벤트 받기 권한 추가 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- This permission is need to check the internet connection state ! -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ResultActivity"></activity>
 
+
+        <!-- 안드로이드 부팅 이벤트 받기 : BroadcastReceiver -->
+        <receiver android:name=".MyAlarm" > <intent-filter>
+        <action android:name="android.intent.action.LOCALE_CHANGED"/>
+        </intent-filter>
+        </receiver>
         <activity
             android:name= ".SplashActivity"
             android:theme="@style/SplashTheme"
@@ -29,7 +40,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCzIbfWIeAUYr9Uox5iyo_sKUwaSFD7fXY" />
+            android:value="AIzaSyALr88wG8gkDB_iGiy6YhugN87euZgGIQA" />
 
         <activity
             android:name=".MainActivity"
@@ -39,6 +50,8 @@
         <activity android:name="com.example.GoogleMapAPI.GoogleMapActivity"
 
             android:theme="@style/AppTheme"/>
+        <!--<service android:name="com.example.services.LocationMonitoringService" /> &lt;!&ndash; BackgroundService &ndash;&gt;-->
+
     </application>
 
 </manifest>
